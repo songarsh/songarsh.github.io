@@ -11,16 +11,17 @@ redirect_from:
 
 Education
 ======
-* B.S. in GitHub, GitHub University, 2012
-* M.S. in Jekyll, GitHub University, 2014
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
+* B.E. in Electronics and Communication Engineering, R. V. College of Engineering, 2022
+* 
+* 
 
 Work experience
 ======
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* August 2020 - June 2021: Research Intern
+  * WIRIN
+
+* January 2022 - July 2022: Student Trainee
+  * Samsung Semiconductor India Research
 
 * Fall 2015: Research Assistant
   * Github University
