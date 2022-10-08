@@ -15,27 +15,41 @@ Education
   * 
 * 
 
-Work experience
+Experience
 ======
-* January 2022 - July 2022: Student Trainee
-  * Samsung Semiconductor India Research
+
+* Samsung Semiconductor India Research
+  * July 2022 - Now: Senior Engineer
+  * January 2022 - July 2022: Student Trainee
   
-* August 2020 - June 2021: Research Intern
-  * WIRIN
+* WIRIN
+  * August 2020 - June 2021: Research Intern
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-Projects
+Research Club & Societies
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+
+* Ashwa Mobility Foundation 
+  * July 2022 - Now: Advisor
+  * June 2020 - July 2022: Electrical Module Lead
+  * June 2019 - June 2020: Electrical Member
+  * October 2018 - June 2019: Electrical Trainee
+
+* IEEE RVCE
+  * August 2018 - August 2019: Member
+
+Honors & Awards
+======
+* Award 1
+* Award 2
+
+Licenses & Certifications
+======
+* License 1
+* License 2
+
+Service and leadership
+======
+* Volunteered
   
 Skills
 ======
@@ -62,15 +76,7 @@ Talks
   {% endfor %}</ul>
 -->
 
-Honors & Awards
-======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
+<!---
 Patents
 ======
 * Skill 1
@@ -79,6 +85,7 @@ Patents
   * Sub-skill 2.2
   * Sub-skill 2.3
 * Skill 3
+-->
 
 <!---
 Teaching
@@ -87,7 +94,14 @@ Teaching
     {% include archive-single-cv.html %}
   {% endfor %}</ul>
 -->
-  
-Service and leadership
+
+<!--
+Projects
 ======
-* Currently signed in to 43 different slack teams
+* Skill 1
+* Skill 2
+  * Sub-skill 2.1
+  * Sub-skill 2.2
+  * Sub-skill 2.3
+* Skill 3
+-->
