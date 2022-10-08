@@ -1,11 +1,11 @@
 ---
-title: "Teaching experience 2"
-collection: teaching
-type: "Workshop"
-permalink: /teaching/2015-spring-teaching-1
-venue: "University 1, Department"
+title: "Project 2"
+collection: projects
+type: "Ashwa Mobility"
+permalink: /projects/2015-spring-teaching-1
+venue: "RV College of Engineering, Ashwa Mobility Foundation"
 date: 2015-01-01
-location: "City, Country"
+location: "Bengaluru, India"
 ---
 
 This is a description of a teaching experience. You can use markdown like any other post.

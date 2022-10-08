@@ -82,12 +82,12 @@ analytics:
 author:
   name             : "Harsh Songara"
   avatar           : "profile.png"
-  bio              : &description
+  bio              : "Architecting AI Accelerators at Samsung Semiconductor India || ECE Undergrad, RVCE || WIRIN, IISc || Built cars for fun at Ashwa Mobility"
   location         : "Bengaluru, India"
-  employer         : 
+  employer         : "Samsung Semiconductor India"
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : #"http://yourfullgooglescholarurl.com"
-  email            :
+  email            : "s.harsh33.hs@gmail.com"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
@@ -239,7 +239,7 @@ defaults:
       author_profile: true
       share: true
       comment: true
-      
+
 
 # Sass/SCSS
 sass:
