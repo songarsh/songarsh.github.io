@@ -3,18 +3,12 @@ main:
   - title: "CV"
     url: /cv/
 
-  - title: "Education"
-    url: /edu/
-
-  - title: "Honors & Awards"
-    url: /honors&awards/
-
   - title: "Publications"
     url: /publications/
 
   - title: "Patents"
     url: /patents/    
-
+    
   - title: "Projects"
     url: /projects/    
         
