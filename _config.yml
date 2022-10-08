@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Harsh Songara / songarsh"
 title_separator          : "-"
 name                     : &name "Harsh Songara"
-description              : &description "Architecting Computers at Samsung Semiconductor India || ECE Undergrad from RVCE || WIRIN, IISc || Electrical Lead, Ashwa Mobility Foundation"
+description              : &description "Architecting AI Accelerators at Samsung Semiconductor India || ECE Undergrad from RVCE || WIRIN, IISc || Ex-Electrical Lead, Ashwa Mobility Foundation"
 url                      : https://songarsh.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "songarsh/songarsh.github.io"
@@ -82,9 +82,9 @@ analytics:
 author:
   name             : "Harsh Songara"
   avatar           : "profile.png"
-  bio              : "Your biography for the left-hand sidebar"
+  bio              : &description
   location         : "Bengaluru, India"
-  employer         :
+  employer         : 
   pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
   googlescholar    : #"http://yourfullgooglescholarurl.com"
   email            :
@@ -103,7 +103,7 @@ author:
   impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
   linkedin         : "https://www.linkedin.com/in/harsh-songara/"
-  orcid            : "http://orcid.org/yourorcidurl"
+  orcid            : #"http://orcid.org/yourorcidurl"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username
@@ -176,16 +176,19 @@ kramdown:
 # Collections
 collections:
   teaching:
+    output: false
+    permalink: /:collection/:path/
+  projects:
     output: true
     permalink: /:collection/:path/
   publications:
     output: true
     permalink: /:collection/:path/
-  portfolio:
+  patents:
     output: true
     permalink: /:collection/:path/
   talks:
-    output: true
+    output: false
     permalink: /:collection/:path/
 
 
@@ -209,10 +212,10 @@ defaults:
     values:
       layout: single
       author_profile: true
-  # _teaching
+  # _projects
   - scope:
       path: ""
-      type: teaching
+      type: projects
     values:
       layout: single
       author_profile: true
@@ -227,23 +230,16 @@ defaults:
       author_profile: true
       share: true
       comments: true
-  # _portfolio
+  # _patents
   - scope:
       path: ""
-      type: portfolio
+      type: patents
     values:
       layout: single
       author_profile: true
       share: true
       comment: true
-  # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: true
-      share: true
+      
 
 # Sass/SCSS
 sass:
