@@ -1,32 +1,51 @@
 ---
+layout: about
+title: about
 permalink: /
-title: "About me - songarsh"
-excerpt: "About me"
-author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
+subtitle: M.Sc. student · <a href='https://safari.ethz.ch/' target='_blank'>SAFARI Research Group</a>, <a href='https://ethz.ch/' target='_blank'>ETH Zürich</a>
+
+profile:
+  align: right
+  image: prof_pic.jpg
+  image_circular: true
+  more_info: >
+    <p>CAB G 86.2</p>
+    <p>Universitätstrasse 6</p>
+    <p>8092 Zürich, Switzerland</p>
+
+selected_papers: true
+social: true
+
+announcements:
+  enabled: true
+  scrollable: true
+  limit:
+
+latest_posts:
+  enabled: false
+  scrollable: true
+  limit: 3
 ---
 
-Interested in Novel Computer Architectures, Memory Systems and its associated research. Currently working with the Samsung Advanced Institute of Technology - India (SAIT-India) team in architecting dedicated compute for AI. 
+I am a Master's student at [ETH Zürich](https://ethz.ch/), working with the [SAFARI Research Group](https://safari.ethz.ch/) led by [Prof. Onur Mutlu](https://people.inf.ethz.ch/omutlu/).
 
-Backed by an education in Electronics & Communication Engg. whilst working with a Formula SAE club inclined towards systems for Urban Mobility where I developed most of my interest in Architectures and Embedded Systems.
+My research focuses on **computer architecture**, with particular interest in **reconfigurable systems** and **sustainable memory systems**. I am especially excited about rethinking the memory hierarchy — DRAM, HBM, and emerging memory technologies — to make future computing systems more capable, efficient, and environmentally responsible.
 
-Key Highlights
-======
-Like many other Jekyll-based GitHub Pages templates, academicpages makes you separate the website's content from its form. The content & metadata of your website are in structured markdown files, while various other files constitute the theme, specifying how to transform that content & metadata into HTML pages. You keep these various markdown (.md), YAML (.yml), HTML, and CSS files in a public GitHub repository. Each time you commit and push an update to the repository, the [GitHub pages](https://pages.github.com/) service creates static HTML pages based on these files, which are hosted on GitHub's servers free of charge.
+Before ETH, I worked at the **Samsung Advanced Institute of Technology — India (SAIT)** on architecting dedicated compute for AI, and earned my B.E. in Electronics & Communication Engineering from **R. V. College of Engineering**, where I led the electrical module of the Formula SAE team [Ashwa Mobility Foundation](https://www.ashwarvce.com/).
 
-Many of the features of dynamic content management systems (like Wordpress) can be achieved in this fashion, using a fraction of the computational resources and with far less vulnerability to hacking and DDoSing. You can also modify the theme to your heart's content without touching the content of your site. If you get to a point where you've broken something in Jekyll/HTML/CSS beyond repair, your markdown files describing your talks, publications, etc. are safe. You can rollback the changes or even delete the repository and start over -- just be sure to save the markdown files! Finally, you can also write scripts that process the structured data on the site, such as [this one](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb) that analyzes metadata in pages about talks to display [a map of every location you've given a talk](https://academicpages.github.io/talkmap.html).
+Reach me at <span class="ob-mail" data-u="cy5oYXJzaDMzLmhz" data-d="Z21haWwuY29t">[email&nbsp;hidden — JS required]</span> — best for any conversation about memory systems, hardware research, or related topics.
 
-Create content & metadata
-------
-For site content, there is one markdown file for each type of content, which are stored in directories like _publications, _talks, _posts, _teaching, or _pages. For example, each talk is a markdown file in the [_talks directory](https://github.com/academicpages/academicpages.github.io/tree/master/_talks). At the top of each markdown file is structured data in YAML about the talk, which the theme will parse to do lots of cool stuff. The same structured data about a talk is used to generate the list of talks on the [Talks page](https://academicpages.github.io/talks), each [individual page](https://academicpages.github.io/talks/2012-03-01-talk-1) for specific talks, the talks section for the [CV page](https://academicpages.github.io/cv), and the [map of places you've given a talk](https://academicpages.github.io/talkmap.html) (if you run this [python file](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.py) or [Jupyter notebook](https://github.com/academicpages/academicpages.github.io/blob/master/talkmap.ipynb), which creates the HTML for the map based on the contents of the _talks directory).
-
-**Markdown generator**
-
-I have also created [a set of Jupyter notebooks](https://github.com/academicpages/academicpages.github.io/tree/master/markdown_generator
-) that converts a CSV containing structured data about talks or presentations into individual markdown files that will be properly formatted for the academicpages template. The sample CSVs in that directory are the ones I used to create my own personal website at stuartgeiger.com. My usual workflow is that I keep a spreadsheet of my publications and talks, then run the code in these notebooks to generate the markdown files, then commit and push them to the GitHub repository.
-
-For more info
-------
-More info about configuring academicpages can be found in [the guide](https://academicpages.github.io/markdown/). The [guides for the Minimal Mistakes theme](https://mmistakes.github.io/minimal-mistakes/docs/configuration/) (which this theme was forked from) might also be helpful.
+<script>
+  /* Render the address in the "user [AT] domain" format that konkanello uses,
+     but keep the source HTML free of any literal email so naive crawlers
+     can't harvest it. JavaScript-disabled visitors see a clear notice. */
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".ob-mail").forEach(function (el) {
+      try {
+        var u = atob(el.dataset.u).split(".").join(" [DOT] ");
+        var d = atob(el.dataset.d).split(".").join(" [DOT] ");
+        el.textContent = u + " [AT] " + d;
+      } catch (e) { /* leave placeholder */ }
+    });
+  });
+</script>

@@ -1,0 +1,162 @@
+/******************************************************************************
+ * Content
+ ******************************************************************************/
+
+@use "variables" as v;
+
+body {
+  padding-bottom: 70px;
+  color: var(--global-text-color);
+  background-color: var(--global-bg-color);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    scroll-margin-top: 66px;
+  }
+}
+
+body.fixed-top-nav {
+  // Add some padding for the nav-bar.
+  padding-top: 57px;
+}
+
+body.sticky-bottom-footer {
+  // Remove padding below footer.
+  padding-bottom: 0;
+}
+
+.container {
+  max-width: v.$max-content-width;
+}
+
+// Profile
+.profile {
+  img {
+    width: 100%;
+  }
+}
+
+// About-page header.
+// Default variant: photo and name/role/socials side-by-side at the top.
+// Variant `--centered`: photo on top, all text centered below it.
+.about-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+
+  .about-header-photo {
+    flex: 0 0 auto;
+    width: 220px;
+    max-width: 35%;
+  }
+
+  .about-header-img {
+    width: 100%;
+    height: auto;
+  }
+
+  .about-header-text {
+    flex: 1 1 auto;
+    min-width: 0;
+
+    .post-title {
+      margin: 0 0 0.25rem 0;
+    }
+
+    .desc {
+      margin: 0 0 0.5rem 0;
+    }
+
+    .more-info {
+      margin: 0.4rem 0 0.6rem 0;
+      font-size: 0.95rem;
+
+      p {
+        margin: 0;
+      }
+    }
+
+    .about-header-icons {
+      margin-top: 0.6rem;
+      font-size: 1.4rem;
+
+      a {
+        margin-right: 0.6rem;
+      }
+    }
+  }
+
+  // Stack on small screens.
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .about-header-photo {
+      width: 60%;
+      max-width: 240px;
+    }
+  }
+}
+
+// Centered variant: stack vertically and center horizontally.
+.about-header.about-header--centered {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+
+  .about-header-photo {
+    width: 220px;
+    max-width: 60%;
+  }
+
+  .about-header-text {
+    width: 100%;
+    max-width: 640px;
+
+    .more-info {
+      p {
+        margin: 0.1rem 0;
+      }
+    }
+
+    .about-header-icons {
+      a {
+        margin: 0 0.4rem;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .about-header-photo {
+      width: 55%;
+    }
+  }
+}
+
+// Content layout uses Bootstrap's grid system with responsive columns
+// Main content flows naturally through container-mt-5 and Bootstrap grid classes
+// See _layouts/default.liquid and _includes/projects.liquid for examples
+
+/******************************************************************************
+ * Publications
+ ******************************************************************************/
+
+// Publications layout is defined in _includes/bib_search.liquid
+// Uses jekyll-scholar for BibTeX parsing and Bootstrap cards for display
+
+/*****************************************************************************
+* Projects
+*****************************************************************************/
+
+// TODO: redefine projects layout.
