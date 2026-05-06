@@ -7,10 +7,10 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Harsh Songara / songarsh"
+title                    : ""
 title_separator          : "-"
-name                     : &name "Harsh Songara"
-description              : &description "Architecting AI Accelerators at Samsung Semiconductor India || ECE Undergrad from RVCE || WIRIN, IISc || Ex-Electrical Lead, Ashwa Mobility Foundation"
+name                     : &name ""
+description              : &description ""
 url                      : https://songarsh.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "songarsh/songarsh.github.io"
@@ -78,43 +78,17 @@ analytics:
     tracking_id          :
 
 
-# Site Author
+# Site Author -- blanked while a new site is being built.
 author:
-  name             : "Harsh Songara"
-  avatar           : "profile.png"
-  bio              : "Architecting AI Accelerators at Samsung Semiconductor India || ECE Undergrad, RVCE || WIRIN, IISc || Built cars for fun at Ashwa Mobility"
-  location         : "Bengaluru, India"
-  employer         : "Samsung Semiconductor India"
-  pubmed           : #"https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : #"http://yourfullgooglescholarurl.com"
-  email            : "s.harsh33.hs@gmail.com"
-  researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
-  uri              :
-  bitbucket        :
-  codepen          :
-  dribbble         :
-  flickr           :
-  facebook         :
-  foursquare       :
-  github           : "songarsh"
-  google_plus      :
-  keybase          :
-  instagram        :
-  impactstory      : #"https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
-  lastfm           :
-  linkedin         : "https://www.linkedin.com/in/harsh-songara/"
-  orcid            : #"http://orcid.org/yourorcidurl"
-  pinterest        :
-  soundcloud       :
-  stackoverflow    : # http://stackoverflow.com/users/123456/username
-  steam            :
-  tumblr           :
-  twitter          : "songarsh"
-  vine             :
-  weibo            :
-  xing             :
-  youtube          :
-  wikipedia        :
+  name             : ""
+  avatar           : ""
+  bio              : ""
+  location         : ""
+  employer         : ""
+  email            : ""
+  github           :
+  linkedin         :
+  twitter          :
 
 
 # Reading Files
