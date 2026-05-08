@@ -23,13 +23,73 @@ footer.fixed-bottom {
   }
 }
 
+// Sticky-bottom variant -- this is the one used on the about page (since
+// site.footer_fixed: true gives the *fixed* variant). Either way, we
+// theme it to match the cream page: a hairline divider, muted text,
+// burgundy links, soft serif italic touch on the credits.
 footer.sticky-bottom {
   border-top: 1px solid var(--global-divider-color);
-  padding-top: 40px;
-  padding-bottom: 40px;
-  font-size: 0.9rem;
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+  font-size: 0.82rem;
+  color: var(--global-text-color-light);
+  background: transparent;
 
   .container {
     text-align: center;
+    line-height: 1.55;
+  }
+
+  .footer-main {
+    color: var(--global-text-color);
+    font-size: 0.9rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .footer-meta {
+    font-size: 0.78rem;
+    opacity: 0.85;
+
+    time {
+      color: var(--global-theme-color);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+  }
+
+  a {
+    color: var(--global-theme-color);
+    text-decoration: underline;
+    text-decoration-color: rgba(123, 45, 38, 0.35);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: text-decoration-color 0.18s ease;
+
+    &:hover {
+      text-decoration-color: var(--global-theme-color);
+    }
+  }
+}
+
+// Override the fixed-bottom variant too so light-mode visitors don't see
+// a dark stripe at the foot of the page.
+footer.fixed-bottom {
+  background-color: var(--global-footer-bg-color);
+  border-top: 1px solid var(--global-divider-color);
+  font-size: 0.78rem;
+
+  .container {
+    color: var(--global-footer-text-color);
+    text-align: center;
+  }
+
+  a {
+    color: var(--global-footer-link-color);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: underline;
+    }
   }
 }

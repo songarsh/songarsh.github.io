@@ -1,6 +1,6 @@
 cv:
   name: Harsh Songara
-  label: M.Sc. Student, Computer Architecture
+  label: M.Sc. Student, Electrical Engineering and Information Technology
   email: ""  # intentionally blank -- contact info is on the about page (JS-decoded)
   location: Zürich, Switzerland
   image: ""
@@ -20,7 +20,7 @@ cv:
       - institution: ETH Zürich
         location: Zürich, Switzerland
         url: https://ethz.ch/
-        area: Computer Science / Computer Architecture
+        area: Electrical Engineering and Information Technology (D-ITET)
         studyType: M.Sc.
         start_date: 2024-09
         end_date: present
@@ -45,7 +45,7 @@ cv:
           - Research on reconfigurable and sustainable memory systems
           - DRAM characterization and modelling
 
-      - company: Samsung Semiconductor India Research (SAIT-India)
+      - company: Samsung Semiconductor India Research 
         position: Senior Engineer
         location: Bengaluru, India
         start_date: 2022-07
@@ -53,7 +53,7 @@ cv:
         highlights:
           - Architecting dedicated compute for AI workloads
 
-      - company: Samsung Semiconductor India Research (SAIT-India)
+      - company: Samsung Semiconductor India Research 
         position: Research Intern
         location: Bengaluru, India
         start_date: 2022-01

@@ -15,20 +15,61 @@
     margin-bottom: 1em;
   }
 
-  h2 {
-    margin-bottom: 1rem;
+  // Year marker: a small italic serif numeral centered between two thin
+  // fading rules. Smaller than paper titles and visually quieter -- it's
+  // a chapter label, not a headline.
+  h2,
+  h2.bibliography {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.9rem;
+    width: 100%;
+    max-width: 14rem;
+    margin: 2rem auto 1.25rem;
+    padding: 0;
+    border: none;
+    background: none;
+    box-shadow: none;
+    text-align: center;
+    line-height: 1;
+
+    font-family: "Lora", Georgia, "Times New Roman", serif;
+    font-style: italic;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--global-text-color-light);
 
     span {
-      font-size: 1.5rem;
+      font: inherit;
+      color: inherit;
+      letter-spacing: inherit;
     }
-  }
 
-  h2.bibliography {
-    color: var(--global-divider-color);
-    border-top: 1px solid var(--global-divider-color);
-    padding-top: 1rem;
-    margin-top: 2rem;
-    text-align: right;
+    // Thin flanking rules that fade out at the far edges -- subtle,
+    // not assertive.
+    &::before,
+    &::after {
+      content: "";
+      display: block;
+      flex: 1 1 auto;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent 0%,
+        var(--global-text-color-light) 100%
+      );
+      opacity: 0.4;
+    }
+
+    &::after {
+      background: linear-gradient(
+        to right,
+        var(--global-text-color-light) 0%,
+        transparent 100%
+      );
+    }
   }
 
   ol.bibliography {
@@ -36,8 +77,54 @@
     padding: 0;
     margin-top: 0;
 
+    // Each paper is its own card. A soft 1px border defines the edge; on
+    // hover the card lifts gently and gains a thin burgundy left accent.
     li {
-      margin-bottom: 1rem;
+      position: relative;
+      margin-bottom: 1.1rem;
+      padding: 1rem 1.25rem;
+
+      @media (max-width: 576px) {
+        padding: 0.8rem 0.9rem;
+        margin-bottom: 0.85rem;
+      }
+      background: var(--global-card-bg-color);
+      border: 1px solid var(--global-divider-color);
+      border-radius: 6px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      overflow: hidden;
+      transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+
+      // A subtle 2px burgundy bar slides in from the left on hover.
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 2px;
+        background: var(--global-theme-color);
+        opacity: 0;
+        transition: opacity 0.18s ease;
+      }
+
+      &:hover {
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        transform: translateY(-2px);
+        border-color: rgba(123, 45, 38, 0.25);
+
+        &::before {
+          opacity: 1;
+        }
+      }
+
+      // When the abbr / preview column is disabled, the entry text col
+      // is rendered as col-sm-10. Stretch it to the full card width so
+      // we do not leave ~17% empty whitespace on the right.
+      > .row > [class*="col-sm-10"] {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
 
       .preview {
         display: inline-block;
@@ -68,10 +155,23 @@
       }
 
       .title {
-        font-weight: bolder;
+        font-weight: 700;
+        font-size: 1.15rem;
+        line-height: 1.35;
+        margin-bottom: 0.4rem;
+        transition: color 0.18s ease;
+      }
+
+      // Title shifts to the burgundy accent when the card is hovered.
+      &:hover .title {
+        color: var(--global-theme-color);
       }
 
       .author {
+        color: var(--global-text-color-light);
+        font-size: 1rem;
+        line-height: 1.5;
+
         a {
           border-bottom: 1px dashed var(--global-theme-color);
 
@@ -81,9 +181,15 @@
           }
         }
 
+        // Self-author highlight: burgundy + bold + brief underline.
         > em {
-          border-bottom: 1px solid;
           font-style: normal;
+          font-weight: 700;
+          color: var(--global-theme-color);
+          text-decoration: underline;
+          text-decoration-color: var(--global-theme-color);
+          text-decoration-thickness: 2px;
+          text-underline-offset: 3px;
         }
 
         > span.more-authors {

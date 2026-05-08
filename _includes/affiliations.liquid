@@ -1,0 +1,30 @@
+{% comment %}
+  Affiliations strip: small institution logos of every place I've been --
+  rendered just above the page footer. Logo only -- no caption, no
+  section label. Each logo is muted/desaturated by default; on hover it
+  returns to full color and lifts gently.
+{% endcomment %}
+<div class="affiliations" aria-label="Affiliations">
+  <ul class="affiliations-list">
+    <li>
+      <a href="https://safari.ethz.ch/" target="_blank" rel="external nofollow noopener" title="SAFARI Research Group">
+        <img class="affiliation-logo" src="{{ '/assets/img/badges/safari.jpg' | relative_url }}" alt="SAFARI">
+      </a>
+    </li>
+    <li>
+      <a href="https://ethz.ch/" target="_blank" rel="external nofollow noopener" title="ETH Zürich">
+        <img class="affiliation-logo" src="{{ '/assets/img/badges/ethz.svg' | relative_url }}" alt="ETHZ">
+      </a>
+    </li>
+    <li>
+      <a href="https://semiconductor.samsung.com/" target="_blank" rel="external nofollow noopener" title="Samsung">
+        <img class="affiliation-logo" src="{{ '/assets/img/badges/samsung.svg' | relative_url }}" alt="Samsung">
+      </a>
+    </li>
+    <li>
+      <a href="https://www.rvce.edu.in/" target="_blank" rel="external nofollow noopener" title="R. V. College of Engineering">
+        <img class="affiliation-logo" src="{{ '/assets/img/badges/rvce.png' | relative_url }}" alt="RVCE">
+      </a>
+    </li>
+  </ul>
+</div>

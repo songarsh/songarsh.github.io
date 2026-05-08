@@ -30,6 +30,11 @@ $burgundy-color-light: #a64e44 !default;
 $accent-blue-color: #2e5077 !default;
 $accent-blue-color-light: #5b8bb5 !default;
 
+// Pale warm cream that pairs with the burgundy/blue palette and reduces
+// the harshness of pure white. Used as the page background in light mode.
+$cream-bg-color: #faf6f0 !default;
+$cream-card-bg-color: #fffcf7 !default;
+
 $grey-color: #828282 !default;
 $grey-color-light: color.adjust($grey-color, $lightness: 40%);
 $grey-color-dark: #1c1c1d;

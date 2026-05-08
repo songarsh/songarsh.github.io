@@ -3,10 +3,10 @@ layout: default
 ---
 <div class="post">
   {% comment %}
-    Custom about header: photo on top, name + role + address + social icons
-    centered below it. Bio and other sections follow as subsections.
+    Custom about header: photo on the left, name + role + address + social
+    icons on the right. Bio and other sections follow as subsections.
   {% endcomment %}
-  <header class="about-header about-header--centered">
+  <header class="about-header">
     {% if page.profile and page.profile.image %}
       {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
       {% if page.profile.image_circular %}
@@ -42,36 +42,111 @@ layout: default
   </header>
 
   <article>
+    {% comment %}
+      Section nav: a small fixed-position vertical button list on the right
+      side of the viewport that lets the reader jump between section
+      headings on this page. Auto-highlights the section currently in
+      view (see the IntersectionObserver script at the bottom of the
+      file). Hidden on narrow screens where it would overlap content.
+    {% endcomment %}
+    <aside class="section-nav" aria-label="On this page">
+      <ul>
+        <li><a href="#bio" data-target="bio"><span class="section-nav-dot" aria-hidden="true"></span><span class="section-nav-label">Bio</span></a></li>
+        {% if page.announcements and page.announcements.enabled %}
+          <li><a href="#news" data-target="news"><span class="section-nav-dot" aria-hidden="true"></span><span class="section-nav-label">News</span></a></li>
+        {% endif %}
+        {% if page.selected_papers %}
+          <li><a href="#publications" data-target="publications"><span class="section-nav-dot" aria-hidden="true"></span><span class="section-nav-label">Publications</span></a></li>
+        {% endif %}
+        {% if page.timeline and page.timeline.enabled %}
+          <li><a href="#vitae" data-target="vitae"><span class="section-nav-dot" aria-hidden="true"></span><span class="section-nav-label">Vitae</span></a></li>
+        {% endif %}
+      </ul>
+    </aside>
+
     <!-- Bio -->
-    <h2>Bio</h2>
+    <h2 id="bio">Bio</h2>
     {{ content }}
 
     <!-- News -->
     {% if page.announcements and page.announcements.enabled %}
-      <h2>
+      <h2 id="news">
         <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
       </h2>
       {% include news.liquid limit=true %}
     {% endif %}
 
+    <!-- Publications -->
+    {% if page.selected_papers %}
+      <h2 id="publications">
+        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Publications</a>
+      </h2>
+      {% include selected_papers.liquid %}
+    {% endif %}
+
+    <!-- Vitae (career arc rendered as a path-based timeline) -->
+    {% if page.timeline and page.timeline.enabled %}
+      <h2 id="vitae">Vitae</h2>
+      {% include timeline.liquid scrollable=page.timeline.scrollable reverse=page.timeline.reverse %}
+    {% endif %}
+
     <!-- Latest posts -->
     {% if page.latest_posts and page.latest_posts.enabled %}
-      <h2>
+      <h2 id="latest-posts">
         <a href="{{ '/blog/' | relative_url }}" style="color: inherit">Latest Posts</a>
       </h2>
       {% include latest_posts.liquid %}
     {% endif %}
 
-    <!-- Selected papers -->
-    {% if page.selected_papers %}
-      <h2>
-        <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
-      </h2>
-      {% include selected_papers.liquid %}
-    {% endif %}
+    <!-- Affiliations strip: small grayscale badges of every place I've
+         been / am at, just before the footer. -->
+    {% include affiliations.liquid %}
 
     {% if site.newsletter and site.newsletter.enabled and site.footer_fixed %}
       {% include newsletter.liquid center=true %}
     {% endif %}
   </article>
 </div>
+
+<script>
+  // Highlight the section-nav item whose heading is currently in view.
+  // Each section ends roughly where the next h2 begins, so we observe the
+  // h2 elements (with a horizontal "line" rootMargin that focuses on the
+  // top third of the viewport) to decide which section is "active".
+  (function () {
+    if (!('IntersectionObserver' in window)) { return; }
+    var nav = document.querySelector('.section-nav');
+    if (!nav) { return; }
+    var links = nav.querySelectorAll('a[data-target]');
+    var headings = [];
+    links.forEach(function (link) {
+      var h = document.getElementById(link.dataset.target);
+      if (h) { headings.push(h); }
+    });
+    if (headings.length === 0) { return; }
+
+    function setActive(id) {
+      links.forEach(function (link) {
+        link.classList.toggle('section-nav-active', link.dataset.target === id);
+      });
+    }
+
+    // Default: first section is active until the second comes into view.
+    setActive(headings[0].id);
+
+    var observer = new IntersectionObserver(function (entries) {
+      // Find the heading nearest the top-third line that's currently
+      // crossing it; if multiple are visible, prefer the most recent.
+      var visible = entries.filter(function (e) { return e.isIntersecting; });
+      if (visible.length === 0) { return; }
+      // Among visible, pick the one whose top is highest (closest to the
+      // top of the page).
+      visible.sort(function (a, b) {
+        return a.boundingClientRect.top - b.boundingClientRect.top;
+      });
+      setActive(visible[0].target.id);
+    }, { rootMargin: '-20% 0px -65% 0px', threshold: 0 });
+
+    headings.forEach(function (h) { observer.observe(h); });
+  })();
+</script>

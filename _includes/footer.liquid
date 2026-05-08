@@ -1,14 +1,23 @@
+{% comment %}
+  Custom footer: name + copyright on top line; "last updated" date and
+  build credits on a quieter second line. The {{ site.time }} value is
+  the moment Jekyll built this page -- whenever the site is rebuilt and
+  redeployed, this date refreshes automatically.
+{% endcomment %}
 {% capture footer_contents %}
-  &copy; Copyright {{ site.time | date: '%Y' }}
-  {{ site.first_name }}
-  {{ site.middle_name }}
-  {{ site.last_name }}. {{ site.footer_text }}
-  {% if site.impressum_path %}
-    <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>.
-  {% endif %}
-  {% if site.last_updated %}
-    Last updated: {{ 'now' | date: '%B %d, %Y' }}.
-  {% endif %}
+  <div class="footer-main">
+    &copy; {{ site.time | date: '%Y' }} <strong>{{ site.first_name }} {{ site.last_name }}</strong>
+    {% if site.impressum_path %}
+      &middot; <a href="{{ site.url }}{{ site.baseurl }}{{ site.impressum_path }}">Impressum</a>
+    {% endif %}
+  </div>
+  <div class="footer-meta">
+    {% if site.last_updated %}
+      Last updated <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%b %d, %Y' }}</time>
+      &middot;
+    {% endif %}
+    {{ site.footer_text }}
+  </div>
 {% endcapture %}
 
 {% if site.footer_fixed %}
