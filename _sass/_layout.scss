@@ -541,21 +541,14 @@ body.sticky-bottom-footer {
     opacity: 1;
   }
 
-  // Dark mode:
-  //   * Non-SAFARI logos render as pure white silhouettes (no hover diff).
-  //   * SAFARI keeps native orange (no hover diff).
+  // Dark mode: every Vitae badge logo (ETHZ, SAFARI, Samsung, RVCE)
+  // renders as a pure white silhouette at full opacity, in both default
+  // and hover states.
   html[data-theme="dark"] {
     .vitae-badge--image img,
     .vitae-card:hover .vitae-badge--image img {
       mix-blend-mode: screen;
       filter: brightness(0) invert(1);
-      opacity: 1;
-    }
-
-    .vitae-badge--image img[src*="safari"],
-    .vitae-card:hover .vitae-badge--image img[src*="safari"] {
-      mix-blend-mode: normal;
-      filter: none;
       opacity: 1;
     }
   }
@@ -798,24 +791,16 @@ body.sticky-bottom-footer {
       opacity 0.25s ease;
   }
 
-  // Dark mode:
-  //   * Non-SAFARI logos render as pure white silhouettes (full opacity,
-  //     same in default and hover states).
-  //   * SAFARI keeps its native orange palette unchanged in both states.
-  // `brightness(0) invert(1)` collapses any color or alpha-coloured
-  // pixel into pure white -- works for the multi-colour RVCE PNG too.
+  // Dark mode: every logo (ETHZ, SAFARI, Samsung, RVCE, ...) renders as
+  // a pure white silhouette at full opacity, in both default and hover
+  // states. `brightness(0) invert(1)` collapses any color or alpha-
+  // coloured pixel into pure white -- works for the multi-colour RVCE
+  // PNG and the SAFARI orange SVG alike.
   html[data-theme="dark"] & {
     .affiliation-logo,
     a:hover .affiliation-logo {
       mix-blend-mode: screen;
       filter: brightness(0) invert(1);
-      opacity: 1;
-    }
-
-    .affiliation-logo[src*="safari"],
-    a:hover .affiliation-logo[src*="safari"] {
-      mix-blend-mode: normal;
-      filter: none;
       opacity: 1;
     }
   }
