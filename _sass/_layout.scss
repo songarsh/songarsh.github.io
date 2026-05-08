@@ -65,14 +65,14 @@ body.sticky-bottom-footer {
     border-radius: 8px;
     box-shadow:
       0 1px 2px rgba(0, 0, 0, 0.06),
-      0 8px 24px -8px rgba(123, 45, 38, 0.18);
+      0 8px 24px -8px rgba(var(--global-theme-color-rgb), 0.18);
     transition: transform 0.25s ease, box-shadow 0.25s ease;
 
     &:hover {
       transform: translateY(-2px);
       box-shadow:
         0 2px 4px rgba(0, 0, 0, 0.08),
-        0 12px 32px -8px rgba(123, 45, 38, 0.28);
+        0 12px 32px -8px rgba(var(--global-theme-color-rgb), 0.28);
     }
   }
 
@@ -257,7 +257,7 @@ body.sticky-bottom-footer {
     &:hover {
       color: var(--global-theme-color);
       text-decoration: none;
-      background: rgba(123, 45, 38, 0.06);
+      background: rgba(var(--global-theme-color-rgb), 0.06);
 
       .section-nav-dot {
         border-color: var(--global-theme-color);
@@ -326,7 +326,7 @@ body.sticky-bottom-footer {
     }
 
     &:hover {
-      background-color: rgba(123, 45, 38, 0.05); // pale burgundy tint
+      background-color: rgba(var(--global-theme-color-rgb), 0.05); // pale burgundy tint
       transform: translateX(3px);
 
       th,
@@ -498,9 +498,9 @@ body.sticky-bottom-footer {
     // Text fallback: small colored chip with initials.
     min-width: 2.4rem;
     padding: 0 0.45rem;
-    background: rgba(123, 45, 38, 0.1);
+    background: rgba(var(--global-theme-color-rgb), 0.1);
     color: var(--global-theme-color);
-    border: 1px solid rgba(123, 45, 38, 0.22);
+    border: 1px solid rgba(var(--global-theme-color-rgb), 0.22);
     border-radius: 999px;
     font-family: "Inter", sans-serif;
     font-size: 0.62rem;
@@ -531,6 +531,13 @@ body.sticky-bottom-footer {
         filter: grayscale(35%);
         opacity: 0.85;
         transition: filter 0.18s ease, opacity 0.18s ease;
+
+        // Dark mode: dark glyphs vanish on a dark page; invert + screen
+        // makes them readable as light marks.
+        html[data-theme="dark"] & {
+          mix-blend-mode: screen;
+          filter: invert(1) grayscale(35%);
+        }
       }
     }
   }
@@ -538,6 +545,10 @@ body.sticky-bottom-footer {
   .vitae-card:hover .vitae-badge--image img {
     filter: grayscale(0%);
     opacity: 1;
+  }
+
+  html[data-theme="dark"] .vitae-card:hover .vitae-badge--image img {
+    filter: invert(1) grayscale(0%);
   }
 
   .vitae-date {
@@ -585,7 +596,7 @@ body.sticky-bottom-footer {
   .vitae-note {
     margin-top: 0.2rem;
     padding: 0.4rem 0.65rem;
-    background: rgba(123, 45, 38, 0.06);
+    background: rgba(var(--global-theme-color-rgb), 0.06);
     border-left: 2px solid var(--global-theme-color);
     border-radius: 0 4px 4px 0;
     font-size: 0.85rem;
@@ -776,6 +787,20 @@ body.sticky-bottom-footer {
     transition:
       filter 0.25s ease,
       opacity 0.25s ease;
+  }
+
+  // Dark mode: multiply against a dark bg makes dark logos vanish.
+  // Invert so dark glyphs read as light, and switch the blend mode so
+  // any remaining bright pixels still drop into the dark page.
+  html[data-theme="dark"] & {
+    .affiliation-logo {
+      mix-blend-mode: screen;
+      filter: invert(1) grayscale(60%);
+    }
+
+    a:hover .affiliation-logo {
+      filter: invert(1) grayscale(0%);
+    }
   }
 
   .affiliation-name {

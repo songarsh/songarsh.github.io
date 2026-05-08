@@ -87,11 +87,11 @@ body {
 
 // Themed text selection -- pale burgundy wash matching the page palette.
 ::selection {
-  background-color: rgba(123, 45, 38, 0.18);
+  background-color: rgba(var(--global-theme-color-rgb), 0.18);
   color: inherit;
 }
 ::-moz-selection {
-  background-color: rgba(123, 45, 38, 0.18);
+  background-color: rgba(var(--global-theme-color-rgb), 0.18);
   color: inherit;
 }
 
@@ -174,7 +174,7 @@ table.table a {
 // its own treatment.
 .post > article > p a {
   text-decoration: underline;
-  text-decoration-color: rgba(123, 45, 38, 0.4);
+  text-decoration-color: rgba(var(--global-theme-color-rgb), 0.4);
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   transition: text-decoration-color 0.18s ease;

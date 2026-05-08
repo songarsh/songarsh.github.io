@@ -60,7 +60,7 @@ footer.sticky-bottom {
   a {
     color: var(--global-theme-color);
     text-decoration: underline;
-    text-decoration-color: rgba(123, 45, 38, 0.35);
+    text-decoration-color: rgba(var(--global-theme-color-rgb), 0.35);
     text-decoration-thickness: 1px;
     text-underline-offset: 2px;
     transition: text-decoration-color 0.18s ease;
