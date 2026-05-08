@@ -140,6 +140,13 @@ body.sticky-bottom-footer {
   }
 }
 
+// While the site is locked to light mode (see _layouts/default.liquid),
+// the toggle button is hidden but kept in the DOM so theme.js can still
+// bind to it without errors. Drop this rule to re-enable the toggle.
+.theme-toggle-floating--hidden {
+  display: none !important;
+}
+
 // Floating theme toggle button. Sits in the bottom-right corner above
 // the footer. Replaces the navbar-mounted toggle that al-folio ships
 // with, since this site hides the navbar.
