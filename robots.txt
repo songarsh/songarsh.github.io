@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://hsongara.com/sitemap.xml
+Sitemap: https://songarsh.github.io/sitemap.xml
