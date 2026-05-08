@@ -538,6 +538,13 @@ body.sticky-bottom-footer {
           mix-blend-mode: screen;
           filter: invert(1) grayscale(35%);
         }
+
+        // SAFARI's orange palette should stay orange in both modes;
+        // skip the invert and the blend mode for it specifically.
+        html[data-theme="dark"] &[src*="safari"] {
+          mix-blend-mode: normal;
+          filter: grayscale(20%);
+        }
       }
     }
   }
@@ -549,6 +556,10 @@ body.sticky-bottom-footer {
 
   html[data-theme="dark"] .vitae-card:hover .vitae-badge--image img {
     filter: invert(1) grayscale(0%);
+  }
+
+  html[data-theme="dark"] .vitae-card:hover .vitae-badge--image img[src*="safari"] {
+    filter: grayscale(0%);
   }
 
   .vitae-date {
@@ -789,9 +800,10 @@ body.sticky-bottom-footer {
       opacity 0.25s ease;
   }
 
-  // Dark mode: multiply against a dark bg makes dark logos vanish.
+  // Dark mode: multiply against a dark bg makes dark glyphs vanish.
   // Invert so dark glyphs read as light, and switch the blend mode so
   // any remaining bright pixels still drop into the dark page.
+  // SAFARI is excluded -- its orange palette stays orange in both modes.
   html[data-theme="dark"] & {
     .affiliation-logo {
       mix-blend-mode: screen;
@@ -800,6 +812,15 @@ body.sticky-bottom-footer {
 
     a:hover .affiliation-logo {
       filter: invert(1) grayscale(0%);
+    }
+
+    .affiliation-logo[src*="safari"] {
+      mix-blend-mode: normal;
+      filter: grayscale(40%);
+    }
+
+    a:hover .affiliation-logo[src*="safari"] {
+      filter: grayscale(0%);
     }
   }
 

@@ -85,9 +85,11 @@ html[data-theme="dark"] {
   --global-theme-color-rgb: 91, 139, 181; // accent-blue-color-light in r,g,b
   --global-hover-color: #{v.$accent-blue-color-light};
   --global-hover-text-color: #{v.$white-color};
-  --global-footer-bg-color: #{v.$grey-color-light};
-  --global-footer-text-color: #{v.$grey-color-dark};
-  --global-footer-link-color: #{v.$black-color};
+  // Dark-mode footer: blend with the dark page rather than reverting to
+  // the al-folio default light-grey band.
+  --global-footer-bg-color: #{v.$grey-color-dark};
+  --global-footer-text-color: #{v.$grey-color};
+  --global-footer-link-color: #{v.$accent-blue-color-light};
   --global-distill-app-color: #{v.$grey-color-light};
   --global-divider-color: #424246;
   --global-card-bg-color: #{v.$grey-900};
