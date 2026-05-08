@@ -1,0 +1,78 @@
+{% comment %}
+  Path-based vertical timeline ("vitae"). One vertical track runs down the
+  middle; each entry is a structured CV-style card sitting on alternating
+  sides of the track.
+
+  Each entry's frontmatter:
+    date          : event date (always shown as the period)
+    badge         : short institution initials (text fallback)
+    badge_image   : filename in /assets/img/badges/  (preferred, overrides text)
+    affiliation   : main callout -- where this happened (markdown allowed)
+    role          : sub-line -- what role I had (markdown allowed)
+    note          : OPTIONAL always-visible note for key info someone
+                    might miss without hovering (e.g. "Under the
+                    supervision of Prof. Onur Mutlu")
+    details       : hover-only secondary info (e.g. location, dept)
+
+  Newest-first by default; pass reverse=false to flip. Year ticks divide
+  groups of entries that share a calendar year.
+{% endcomment %}
+<div class="vitae">
+  {% if site.timeline != blank %}
+    {% if include.reverse == false %}
+      {% assign tl_items = site.timeline | sort: 'date' %}
+    {% else %}
+      {% assign tl_items = site.timeline | sort: 'date' | reverse %}
+    {% endif %}
+    <ul class="vitae-path">
+      {% assign last_year = "" %}
+      {% for item in tl_items %}
+        {% assign cur_year = item.date | date: "%Y" %}
+        {% if cur_year != last_year %}
+          <li class="vitae-year-tick" aria-hidden="true">
+            <span>{{ cur_year }}</span>
+          </li>
+          {% assign last_year = cur_year %}
+        {% endif %}
+        <li class="vitae-item">
+          <div class="vitae-card">
+            <div class="vitae-card-head">
+              {% if item.badge_image %}
+                <span class="vitae-badge vitae-badge--image" aria-hidden="true">
+                  <img src="{{ item.badge_image | prepend: '/assets/img/badges/' | relative_url }}" alt="">
+                </span>
+              {% elsif item.badge %}
+                <span class="vitae-badge" aria-hidden="true">{{ item.badge }}</span>
+              {% endif %}
+              <div class="vitae-card-text">
+                <span class="vitae-date">{{ item.date | date: '%b %Y' }}</span>
+                {% if item.affiliation %}
+                  <h4 class="vitae-affiliation">
+                    {{- item.affiliation | markdownify | remove: '<p>' | remove: '</p>' -}}
+                  </h4>
+                {% endif %}
+                {% if item.role %}
+                  <span class="vitae-role">
+                    {{- item.role | markdownify | remove: '<p>' | remove: '</p>' -}}
+                  </span>
+                {% endif %}
+                {% assign note_stripped = item.note | strip %}
+                {% if note_stripped != "" %}
+                  <div class="vitae-note">
+                    {{- item.note | markdownify | remove: '<p>' | remove: '</p>' -}}
+                  </div>
+                {% endif %}
+                {% assign details_stripped = item.details | strip_html | strip %}
+                {% if details_stripped != "" %}
+                  <div class="vitae-details">
+                    {{- item.details | markdownify | remove: '<p>' | remove: '</p>' -}}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</div>

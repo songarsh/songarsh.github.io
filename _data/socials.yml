@@ -1,0 +1,10 @@
+# Social / contact links shown on the about page footer.
+# NOTE: email is intentionally NOT listed here -- a plain mailto: in the page
+# source is trivially crawled by spam bots. Both addresses are rendered with
+# JS de-obfuscation in _pages/about.md instead.
+github_username: songarsh
+linkedin_username: songarsh
+# scholar_userid: TODO-google-scholar-id
+# orcid_id: 0000-0000-0000-0000
+# cv_pdf: /assets/pdf/harsh_songara_cv.pdf
+rss_icon: false

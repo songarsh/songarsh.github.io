@@ -1,0 +1,806 @@
+/******************************************************************************
+ * Content
+ ******************************************************************************/
+
+@use "variables" as v;
+
+body {
+  padding-bottom: 70px;
+  color: var(--global-text-color);
+  background-color: var(--global-bg-color);
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    scroll-margin-top: 66px;
+  }
+}
+
+body.fixed-top-nav {
+  // Add some padding for the nav-bar.
+  padding-top: 57px;
+}
+
+body.sticky-bottom-footer {
+  // Remove padding below footer.
+  padding-bottom: 0;
+}
+
+.container {
+  max-width: v.$max-content-width;
+}
+
+// Profile
+.profile {
+  img {
+    width: 100%;
+  }
+}
+
+// About-page header.
+// Default variant: photo on the left + text on the right, with the WHOLE
+// block centered horizontally on the page (photo and text hug their content).
+// Variant `--centered`: photo on top, all text centered below it.
+.about-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center; // center the photo+text pair within the page
+  gap: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+
+  .about-header-photo {
+    flex: 0 0 auto;
+    width: 220px;
+    max-width: 35%;
+  }
+
+  .about-header-img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow:
+      0 1px 2px rgba(0, 0, 0, 0.06),
+      0 8px 24px -8px rgba(123, 45, 38, 0.18);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.08),
+        0 12px 32px -8px rgba(123, 45, 38, 0.28);
+    }
+  }
+
+  .about-header-text {
+    flex: 0 1 auto; // hug content, allow shrink, do not grow
+    min-width: 0;
+    max-width: 480px;
+
+    .post-title {
+      margin: 0 0 0.4rem 0;
+      font-size: 3rem;
+      line-height: 1.1;
+
+      @media (max-width: 576px) {
+        font-size: 2.2rem;
+      }
+    }
+
+    .desc {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.2rem;
+      line-height: 1.35;
+    }
+
+    .more-info {
+      margin: 0.5rem 0 0.7rem 0;
+      font-size: 0.8rem;
+
+      p {
+        margin: 0;
+      }
+
+      .header-email {
+        margin-bottom: 0.35rem;
+        font-family: var(--bs-font-monospace, monospace);
+        font-size: 0.78rem;
+      }
+
+      .header-address {
+        line-height: 1.35;
+        font-size: 0.8rem;
+      }
+    }
+
+    .about-header-icons {
+      margin-top: 0.6rem;
+      font-size: 1.4rem;
+
+      a {
+        margin-right: 0.6rem;
+      }
+    }
+  }
+
+  // Stack on small screens.
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+
+    .about-header-photo {
+      width: 60%;
+      max-width: 240px;
+    }
+  }
+}
+
+// Floating theme toggle button. Sits in the bottom-right corner above
+// the footer. Replaces the navbar-mounted toggle that al-folio ships
+// with, since this site hides the navbar.
+.theme-toggle-floating {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.4rem;
+  height: 2.4rem;
+
+  @media (max-width: 576px) {
+    width: 2.2rem;
+    height: 2.2rem;
+    right: 0.6rem;
+    bottom: 0.6rem;
+  }
+  padding: 0;
+  border: 1px solid var(--global-divider-color);
+  border-radius: 50%;
+  background: var(--global-bg-color);
+  color: var(--global-theme-color);
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition:
+    background 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.14);
+    border-color: var(--global-theme-color);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--global-theme-color);
+    outline-offset: 3px;
+  }
+
+  i {
+    line-height: 1;
+  }
+}
+
+// Utility: keep a phrase from breaking across lines. Used to glue together
+// things that should read as a single unit (e.g. "ETZ F78", "ETH Zürich",
+// "Prof. Onur Mutlu") regardless of where the line break would naturally
+// fall.
+.nowrap {
+  white-space: nowrap;
+}
+
+// Right-side section nav: a fixed vertical column of small buttons that
+// jump to each h2 on the about page. Hidden on narrow viewports where
+// it would overlap the main content.
+.section-nav {
+  position: fixed;
+  right: 1.4rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.4rem 0.55rem;
+    border-radius: 4px;
+    color: var(--global-text-color-light);
+    font-family: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    line-height: 1;
+    transition:
+      color 0.18s ease,
+      background 0.18s ease;
+
+    .section-nav-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 1.5px solid var(--global-text-color-light);
+      background: transparent;
+      flex-shrink: 0;
+      transition:
+        border-color 0.18s ease,
+        background 0.18s ease,
+        transform 0.18s ease;
+    }
+
+    .section-nav-label {
+      opacity: 0.78;
+      transition: opacity 0.18s ease;
+    }
+
+    &:hover {
+      color: var(--global-theme-color);
+      text-decoration: none;
+      background: rgba(123, 45, 38, 0.06);
+
+      .section-nav-dot {
+        border-color: var(--global-theme-color);
+      }
+      .section-nav-label {
+        opacity: 1;
+      }
+    }
+
+    // Active section: filled dot + bold burgundy label.
+    &.section-nav-active {
+      color: var(--global-theme-color);
+
+      .section-nav-dot {
+        border-color: var(--global-theme-color);
+        background: var(--global-theme-color);
+        transform: scale(1.2);
+      }
+      .section-nav-label {
+        opacity: 1;
+      }
+    }
+  }
+
+  // Hide on screens too narrow to fit the nav alongside the 1100px content.
+  @media (max-width: 1280px) {
+    display: none;
+  }
+}
+
+// Words wrapped in `.news-keep-color` keep the default text color even
+// when their news row is hovered. Useful for connectors / function words
+// that we don't want catching the burgundy highlight.
+.news .table tr:hover td .news-keep-color {
+  color: var(--global-text-color);
+}
+
+// News rows: compact spacing + subtle hover highlight, indent, and color
+// shift on dates and content for an interactive feel.
+.news .table {
+  margin-bottom: 0;
+
+  th,
+  td {
+    padding: 0.22rem 0.5rem;
+    line-height: 1.4;
+    font-size: 1rem;
+    vertical-align: top;
+    border-top: none;
+  }
+
+  th {
+    font-weight: 600;
+    color: var(--global-text-color-light);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    font-size: 0.92rem;
+  }
+
+  tr {
+    transition: background-color 0.18s ease, transform 0.18s ease;
+
+    th,
+    td {
+      transition: color 0.18s ease;
+    }
+
+    &:hover {
+      background-color: rgba(123, 45, 38, 0.05); // pale burgundy tint
+      transform: translateX(3px);
+
+      th,
+      td {
+        color: var(--global-theme-color);
+      }
+    }
+  }
+}
+
+// Section headers (Bio / News / Vitae / Publications): small-caps with
+// generous letter-spacing and a hairline burgundy rule beneath. The rule
+// extends only as wide as the heading text, not the full container, so
+// the section feels framed rather than partitioned.
+.post > article > h2,
+.post > article > h2 > a {
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--global-theme-color);
+}
+
+.post > article > h2 {
+  position: relative;
+  display: inline-block;
+  margin: 2.75rem 0 1.4rem;
+  padding-bottom: 0.55rem;
+  border: none;
+
+  // Thin underline directly under the heading text.
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1.5px;
+    background: var(--global-theme-color);
+    border-radius: 2px;
+    opacity: 0.85;
+  }
+}
+
+// Vitae: path-based vertical timeline -- one center track with cards on
+// alternating sides. Each card represents a single point-in-time event
+// (start of a role, graduation, etc.).
+.vitae {
+  margin: 1rem 0 1.5rem 0;
+
+  .vitae-path {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+
+    // Center vertical track running down the middle.
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0.4rem;
+      bottom: 0.4rem;
+      width: 4px;
+      background: var(--global-divider-color);
+      border-radius: 2px;
+      transform: translateX(-2px);
+    }
+  }
+
+  .vitae-item {
+    position: relative;
+    margin-bottom: 1.4rem;
+    display: flex;
+
+    // Marker dot on the track, anchored to the top of the card.
+    &::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 0.5rem;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background: var(--global-theme-color);
+      border: 2.5px solid var(--global-bg-color);
+      box-shadow: 0 0 0 1px var(--global-divider-color);
+      transform: translate(-50%, 0);
+      z-index: 1;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    // Odd entries on the left of the track, even on the right.
+    &:nth-child(odd) {
+      justify-content: flex-start;
+
+      .vitae-card {
+        width: calc(50% - 1.5rem);
+        padding-right: 1.5rem;
+        text-align: right;
+        align-items: flex-end;
+      }
+    }
+
+    &:nth-child(even) {
+      justify-content: flex-end;
+
+      .vitae-card {
+        width: calc(50% - 1.5rem);
+        padding-left: 1.5rem;
+        text-align: left;
+        align-items: flex-start;
+      }
+    }
+  }
+
+  .vitae-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    transition: transform 0.18s ease;
+
+    &:hover {
+      transform: translateY(-1px);
+
+      .vitae-date {
+        color: var(--global-theme-color);
+      }
+
+      // Reveal the secondary details tier on hover.
+      .vitae-details {
+        max-height: 5rem;
+        opacity: 1;
+        margin-top: 0.35rem;
+      }
+    }
+  }
+
+  // Card head: badge chip + (period + affiliation + role + note + hover).
+  .vitae-card-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+  }
+
+  .vitae-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    min-width: 0;
+    flex: 1;
+  }
+
+  // Affiliation badge: institution logo (when badge_image is set) or a
+  // text fallback (when only `badge` is set). Logos render at a fixed
+  // height with proportional width and are slightly desaturated until
+  // the card is hovered.
+  .vitae-badge {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.85rem;
+    margin-top: 0.1rem;
+
+    // Text fallback: small colored chip with initials.
+    min-width: 2.4rem;
+    padding: 0 0.45rem;
+    background: rgba(123, 45, 38, 0.1);
+    color: var(--global-theme-color);
+    border: 1px solid rgba(123, 45, 38, 0.22);
+    border-radius: 999px;
+    font-family: "Inter", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1;
+
+    // Image variant: drop the pill chrome entirely; show the logo.
+    &--image {
+      min-width: 0;
+      padding: 0;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      // Reserve a fixed slot so cards on either side line up.
+      width: 2.6rem;
+
+      img {
+        max-height: 100%;
+        max-width: 100%;
+        width: auto;
+        height: auto;
+        object-fit: contain;
+        // mix-blend-mode: multiply turns the white backgrounds in raster
+        // logos transparent against the cream page so PNG/JPG logos
+        // blend with the background as cleanly as the SVG ones.
+        mix-blend-mode: multiply;
+        filter: grayscale(35%);
+        opacity: 0.85;
+        transition: filter 0.18s ease, opacity 0.18s ease;
+      }
+    }
+  }
+
+  .vitae-card:hover .vitae-badge--image img {
+    filter: grayscale(0%);
+    opacity: 1;
+  }
+
+  .vitae-date {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--global-text-color-light);
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.18s ease;
+  }
+
+  // Affiliation: top callout, the main "where" line. Burgundy bold,
+  // slightly larger than the role/note below.
+  .vitae-affiliation {
+    margin: 0;
+    padding: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--global-theme-color);
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dashed currentColor;
+
+      &:hover {
+        border-bottom-style: solid;
+      }
+    }
+  }
+
+  // Role: sub-box right under the affiliation. Italic, default text color.
+  .vitae-role {
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.3;
+    color: var(--global-text-color);
+    font-weight: 500;
+  }
+
+  // Note: optional always-visible callout for key info someone might
+  // miss without hovering. A pale tinted box with a left burgundy bar.
+  .vitae-note {
+    margin-top: 0.2rem;
+    padding: 0.4rem 0.65rem;
+    background: rgba(123, 45, 38, 0.06);
+    border-left: 2px solid var(--global-theme-color);
+    border-radius: 0 4px 4px 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--global-text-color-light);
+
+    a {
+      color: var(--global-theme-color);
+    }
+  }
+
+  // Hover-revealed extra details (location, dept, etc.). Hidden by
+  // default; expands when the card is hovered.
+  .vitae-details {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    margin-top: 0;
+    color: var(--global-text-color-light);
+    font-size: 0.82rem;
+    line-height: 1.4;
+    font-style: italic;
+    transition:
+      max-height 0.3s ease,
+      opacity 0.25s ease,
+      margin-top 0.25s ease;
+  }
+
+  // For odd (left-side) entries, push the badge to the right of the text
+  // block so it visually sits closest to the track.
+  .vitae-item:nth-child(odd) .vitae-card-head {
+    flex-direction: row-reverse;
+  }
+
+  // Mirror the note callout's border bar on the side closer to the track.
+  // (Even entries: bar on left; odd entries: bar on right.)
+  .vitae-item:nth-child(odd) .vitae-note {
+    border-left: none;
+    border-right: 2px solid var(--global-theme-color);
+    border-radius: 4px 0 0 4px;
+  }
+
+  // Year tick: a small italic year label centered on the track, used to
+  // mark the boundary between calendar years in the list.
+  .vitae-year-tick {
+    list-style: none;
+    position: relative;
+    margin: 1.5rem 0 1rem;
+    text-align: center;
+    line-height: 1;
+    pointer-events: none;
+
+    span {
+      display: inline-block;
+      padding: 0.25rem 0.85rem;
+      background: var(--global-bg-color);
+      color: var(--global-text-color-light);
+      font-family: "Lora", Georgia, "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 0.95rem;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--global-divider-color);
+      border-radius: 999px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  // Mobile: collapse to single rail on the left, cards stacked to its right.
+  @media (max-width: 576px) {
+    .vitae-path::before {
+      left: 7px;
+      transform: none;
+    }
+
+    .vitae-item {
+      &::before {
+        left: 7px;
+        transform: translate(-50%, 0);
+      }
+
+      &:nth-child(odd),
+      &:nth-child(even) {
+        justify-content: flex-start;
+
+        .vitae-card {
+          width: calc(100% - 2rem);
+          margin-left: 2rem;
+          padding-left: 0;
+          padding-right: 0;
+          text-align: left;
+          align-items: flex-start;
+        }
+      }
+    }
+  }
+}
+
+// Centered variant: stack vertically and center horizontally.
+.about-header.about-header--centered {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2.5rem;
+
+  .about-header-photo {
+    width: 220px;
+    max-width: 60%;
+  }
+
+  .about-header-text {
+    width: 100%;
+    max-width: 640px;
+
+    .more-info {
+      p {
+        margin: 0.1rem 0;
+      }
+    }
+
+    .about-header-icons {
+      a {
+        margin: 0 0.4rem;
+      }
+    }
+  }
+
+  @media (max-width: 576px) {
+    .about-header-photo {
+      width: 55%;
+    }
+  }
+}
+
+// Affiliations strip near the bottom of the about page: a centered row
+// of institution logos. Each logo is muted/desaturated by default; on
+// hover it returns to full color and lifts gently. The textual name
+// sits below the logo as a caption.
+.affiliations {
+  margin: 4rem 0 2rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--global-divider-color);
+  text-align: center;
+
+  .affiliations-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem 2.4rem;
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.18s ease;
+
+    &:hover {
+      text-decoration: none;
+      transform: translateY(-2px);
+
+      .affiliation-logo {
+        filter: grayscale(0%);
+        opacity: 1;
+      }
+    }
+  }
+
+  .affiliation-logo {
+    height: 2.6rem;
+    width: auto;
+    max-width: 7rem;
+    object-fit: contain;
+    // Multiply makes any white background blend with the cream page so
+    // PNG/JPG logos sit alongside SVGs without a hard rectangular crop.
+    mix-blend-mode: multiply;
+    filter: grayscale(60%);
+    opacity: 0.7;
+    transition:
+      filter 0.25s ease,
+      opacity 0.25s ease;
+  }
+
+  .affiliation-name {
+    font-family: "Inter", sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+}
+
+// Content layout uses Bootstrap's grid system with responsive columns
+// Main content flows naturally through container-mt-5 and Bootstrap grid classes
+// See _layouts/default.liquid and _includes/projects.liquid for examples
+
+/******************************************************************************
+ * Publications
+ ******************************************************************************/
+
+// Publications layout is defined in _includes/bib_search.liquid
+// Uses jekyll-scholar for BibTeX parsing and Bootstrap cards for display
+
+/*****************************************************************************
+* Projects
+*****************************************************************************/
+
+// TODO: redefine projects layout.

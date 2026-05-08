@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="{{ site.lang }}">
+  <!-- Head -->
+  <head>
+    {% if page.redirect %}
+      {% if page.redirect == true %}
+        {% assign redirect = site.baseurl | append: '/' %}
+      {% elsif page.redirect contains '://' %}
+        {% assign redirect = page.redirect %}
+      {% else %}
+        {% assign redirect = page.redirect | relative_url %}
+      {% endif %}
+      <meta http-equiv="refresh" content="3; url={{ redirect }}">
+    {% endif %}
+    {% include head.liquid %}
+  </head>
+
+  <!-- Body -->
+  <body class="{% if site.navbar_fixed and site.show_navbar != false %}fixed-top-nav{% endif %} {% unless site.footer_fixed %}sticky-bottom-footer{% endunless %}">
+    <!-- Header -->
+    {% if site.show_navbar != false %}
+      {% include header.liquid %}
+    {% endif %}
+
+    <!-- Content -->
+    <div class="container mt-5" role="main">
+      {% if page.toc and page.toc.sidebar %}
+        {% if page.toc.sidebar == 'right' %}
+          <div class="row">
+            <!-- main content area -->
+            <div class="col-sm-9">{{ content }}</div>
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-sm-3">
+              <nav id="toc-sidebar" class="sticky-top"></nav>
+            </div>
+          </div>
+        {% else %}
+          <div class="row">
+            <!-- sidebar, which will move to the top on a small screen -->
+            <div class="col-sm-3">
+              <nav id="toc-sidebar" class="sticky-top"></nav>
+            </div>
+            <!-- main content area -->
+            <div class="col-sm-9">{{ content }}</div>
+          </div>
+        {% endif %}
+      {% else %}
+        {{ content }}
+      {% endif %}
+    </div>
+
+    <!-- Floating dark-mode toggle. The navbar is hidden site-wide so the
+         toggle gets its own fixed position in the bottom-right corner.
+         The icon-swap (system / light / dark) is handled by al-folio's
+         theme.js via the matching IDs. -->
+    <button id="light-toggle" class="theme-toggle-floating" title="Change theme" aria-label="Change theme">
+      <i class="fa-half-sun-moon" id="light-toggle-system"></i>
+      <i class="fa-solid fa-moon" id="light-toggle-dark"></i>
+      <i class="fa-solid fa-sun" id="light-toggle-light"></i>
+    </button>
+
+    <!-- Footer -->
+    {% include footer.liquid %}
+
+    <!-- JavaScripts -->
+    {% include scripts.liquid %}
+
+    <!-- Scroll-triggered fade-up animation. Tags entry-level elements
+         on each page and reveals them as they enter the viewport. Skipped
+         entirely for users with `prefers-reduced-motion`. -->
+    <script>
+      (function () {
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          return;
+        }
+        if (!('IntersectionObserver' in window)) {
+          return;
+        }
+        var targets = document.querySelectorAll(
+          '.post > article > h2,' +
+          '.post > article > p,' +
+          '.about-header,' +
+          '.news .table tr,' +
+          '.vitae-item,' +
+          '.publications ol.bibliography > li'
+        );
+        targets.forEach(function (el) { el.classList.add('fade-up'); });
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('fade-up--visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        targets.forEach(function (el) { observer.observe(el); });
+      })();
+    </script>
+  </body>
+</html>

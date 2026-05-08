@@ -1,0 +1,101 @@
+cv:
+  name: Harsh Songara
+  label: M.Sc. Student, Electrical Engineering and Information Technology
+  email: ""  # intentionally blank -- contact info is on the about page (JS-decoded)
+  location: Zürich, Switzerland
+  image: ""
+  summary: >-
+    Master's student at ETH Zürich (SAFARI Research Group) working on
+    reconfigurable and sustainable memory systems. Previously at Samsung
+    Advanced Institute of Technology — India.
+
+  social_networks:
+    - network: GitHub
+      username: songarsh
+    - network: LinkedIn
+      username: songarsh
+
+  sections:
+    Education:
+      - institution: ETH Zürich
+        location: Zürich, Switzerland
+        url: https://ethz.ch/
+        area: Electrical Engineering and Information Technology (D-ITET)
+        studyType: M.Sc.
+        start_date: 2024-09
+        end_date: present
+        highlights:
+          - Member of the SAFARI Research Group (Prof. Onur Mutlu) since Dec 2024
+          - Research focus, reconfigurable and sustainable memory systems
+
+      - institution: R. V. College of Engineering
+        location: Bengaluru, India
+        area: Electronics and Communication Engineering
+        studyType: Bachelor's
+        start_date: 2018-08
+        end_date: 2022-07
+
+    Experience:
+      - company: SAFARI Research Group, ETH Zürich
+        position: Master's Researcher
+        location: Zürich, Switzerland
+        start_date: 2024-12
+        end_date: present
+        highlights:
+          - Research on reconfigurable and sustainable memory systems
+          - DRAM characterization and modelling
+
+      - company: Samsung Semiconductor India Research 
+        position: Senior Engineer
+        location: Bengaluru, India
+        start_date: 2022-07
+        end_date: 2024-08
+        highlights:
+          - Architecting dedicated compute for AI workloads
+
+      - company: Samsung Semiconductor India Research 
+        position: Research Intern
+        location: Bengaluru, India
+        start_date: 2022-01
+        end_date: 2022-07
+
+      - company: WIRIN (Wipro IISc Research and Innovation Network)
+        position: Research Intern
+        location: Bengaluru, India
+        start_date: 2020
+        end_date: 2021
+
+    Service and Activities:
+      - organization: Ashwa Mobility Foundation (Formula SAE, RVCE)
+        position: Advisor
+        start_date: 2022
+        end_date: present
+      - organization: Ashwa Mobility Foundation
+        position: Electrical Module Lead
+        start_date: 2020
+        end_date: 2022
+      - organization: Ashwa Mobility Foundation
+        position: Electrical Member
+        start_date: 2019
+        end_date: 2020
+
+    Honors and Awards:
+      - title: TODO — add awards
+        year: ""
+
+    Skills:
+      - category: Research
+        items:
+          - Computer architecture
+          - DRAM and memory systems
+          - Reconfigurable computing (CGRA / FPGA)
+      - category: Tools
+        items:
+          - Ramulator2
+          - DRAMsim3
+          - DRAM-Bender
+          - Verilog / SystemVerilog
+      - category: Languages
+        items:
+          - C / C++
+          - Python
