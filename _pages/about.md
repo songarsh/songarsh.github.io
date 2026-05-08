@@ -32,13 +32,13 @@ latest_posts:
   limit: 3
 ---
 
-I am a Master's student <span class="nowrap">at [ETH Zürich](https://ethz.ch/)</span>, working <span class="nowrap">with the [SAFARI Research Group](https://safari.ethz.ch/)</span> <span class="nowrap">led by [Prof. Onur Mutlu](https://people.inf.ethz.ch/omutlu/)</span>.
+I am a Master's student <span class="nowrap">at [ETH Zürich](https://ethz.ch/)</span> in the <span class="nowrap">Electrical Engineering and Information Technology</span> program, working <span class="nowrap">with the [SAFARI Research Group](https://safari.ethz.ch/)</span> <span class="nowrap">under [Prof. Onur Mutlu](https://people.inf.ethz.ch/omutlu/)</span>.
 
-My research focuses <span class="nowrap">on **computer architecture**</span>, with particular interest <span class="nowrap">in **reconfigurable systems**</span> <span class="nowrap">and **sustainable memory systems**</span>. I am especially excited about rethinking the memory hierarchy — DRAM, HBM, and emerging memory technologies — to make future computing systems more capable, efficient, and environmentally responsible.
+My research sits at the intersection of <span class="nowrap">**computer architecture**</span> and <span class="nowrap">**memory systems**</span>. I am particularly drawn to rethinking the memory hierarchy to make future computing both more capable and more sustainable.
 
-Before ETH, I worked <span class="nowrap">at **Samsung**</span> on architecting <span class="nowrap">dedicated compute</span> <span class="nowrap">for AI</span>, and earned my B.E. <span class="nowrap">in Electronics & Communication Engineering</span> <span class="nowrap">from **R. V. College of Engineering**</span>.
+Before ETH, I spent two and a half years <span class="nowrap">at **Samsung Semiconductor**</span> architecting <span class="nowrap">dedicated compute</span> <span class="nowrap">for AI</span> workloads and contributing to the <span class="nowrap">HBM-PIM near-memory architecture</span>. I earned my Bachelor's <span class="nowrap">in Electronics & Communication Engineering</span> <span class="nowrap">from **R. V. College of Engineering**, Bengaluru</span>.
 
-Feel free to reach out — happy to chat about memory systems, hardware research, or anything in between.
+Feel free to reach out — I'm always happy to chat about <span class="nowrap">memory systems</span>, <span class="nowrap">hardware research</span>, or anything in between.
 
 <script>
   /* Render the address in the "user [AT] domain" format that konkanello uses,

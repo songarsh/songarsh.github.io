@@ -7,6 +7,6 @@ badge: Samsung
 badge_image: samsung.svg
 affiliation: <span class="nowrap">Samsung Semiconductor</span>
 role: Research Intern
-note: 
-details: Bengaluru, India
+note: In <span class="nowrap">Mr. Ankur Deshwal's</span> team
+details: Simulating the <span class="nowrap">HBM-PIM near-memory architecture</span>
 ---

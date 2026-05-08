@@ -288,6 +288,13 @@ body.sticky-bottom-footer {
   }
 }
 
+// Words wrapped in `.news-keep-color` keep the default text color even
+// when their news row is hovered. Useful for connectors / function words
+// that we don't want catching the burgundy highlight.
+.news .table tr:hover td .news-keep-color {
+  color: var(--global-text-color);
+}
+
 // News rows: compact spacing + subtle hover highlight, indent, and color
 // shift on dates and content for an interactive feel.
 .news .table {

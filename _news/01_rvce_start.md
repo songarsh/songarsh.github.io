@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Starting my Bachelors <span class="nowrap">in Electronics & Communication Engineering</span> <span class="nowrap">at **R. V. College of Engineering**</span>.
+Starting my Bachelor's <span class="nowrap">in Electronics & Communication Engineering</span> <span class="nowrap">at **R. V. College of Engineering**</span>.

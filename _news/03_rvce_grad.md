@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Graduating with a Bachelors <span class="nowrap">in Electronics & Communication Engineering</span> <span class="nowrap">from **R. V. College of Engineering**</span>.
+Graduating with a Bachelor's <span class="nowrap">in Electronics & Communication Engineering</span> <span class="nowrap">from **R. V. College of Engineering**</span>.

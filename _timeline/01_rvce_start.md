@@ -6,7 +6,7 @@ related_posts: false
 badge: RVCE
 badge_image: rvce.png
 affiliation: <span class="nowrap">R. V. College of Engineering</span>
-role: Bachelors <span class="nowrap">in Electronics & Communication Engineering</span>
+role: Bachelor's <span class="nowrap">in Electronics & Communication Engineering</span>
 note: 
-details: Bengaluru, India
+details: 
 ---

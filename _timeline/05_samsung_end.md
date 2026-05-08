@@ -8,5 +8,5 @@ badge_image: samsung.svg
 affiliation: <span class="nowrap">Samsung Semiconductor</span>
 role: Concluded role as <span class="nowrap">Senior Engineer</span>
 note: 
-details: Bengaluru, India · Two and a half years
+details: 
 ---

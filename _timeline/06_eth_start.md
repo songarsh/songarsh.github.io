@@ -7,6 +7,6 @@ badge: ETHZ
 badge_image: ethz.svg
 affiliation: <span class="nowrap">[ETH Zürich](https://ethz.ch/)</span>
 role: Master's <span class="nowrap">in Electrical Engineering and Information Technology</span>
-note: 
-details: Zürich, Switzerland · D-ITET
+note: With a focus on <span class="nowrap">Computers and Networks</span>
+details: 
 ---
