@@ -531,35 +531,33 @@ body.sticky-bottom-footer {
         filter: grayscale(35%);
         opacity: 0.85;
         transition: filter 0.18s ease, opacity 0.18s ease;
-
-        // Dark mode: dark glyphs vanish on a dark page; invert + screen
-        // makes them readable as light marks.
-        html[data-theme="dark"] & {
-          mix-blend-mode: screen;
-          filter: invert(1) grayscale(35%);
-        }
-
-        // SAFARI's orange palette should stay orange in both modes;
-        // skip the invert and the blend mode for it specifically.
-        html[data-theme="dark"] &[src*="safari"] {
-          mix-blend-mode: normal;
-          filter: grayscale(20%);
-        }
       }
     }
   }
 
+  // Light-mode hover: drop the desaturation, return to full color.
   .vitae-card:hover .vitae-badge--image img {
     filter: grayscale(0%);
     opacity: 1;
   }
 
-  html[data-theme="dark"] .vitae-card:hover .vitae-badge--image img {
-    filter: invert(1) grayscale(0%);
-  }
+  // Dark mode:
+  //   * Non-SAFARI logos render as pure white silhouettes (no hover diff).
+  //   * SAFARI keeps native orange (no hover diff).
+  html[data-theme="dark"] {
+    .vitae-badge--image img,
+    .vitae-card:hover .vitae-badge--image img {
+      mix-blend-mode: screen;
+      filter: brightness(0) invert(1);
+      opacity: 1;
+    }
 
-  html[data-theme="dark"] .vitae-card:hover .vitae-badge--image img[src*="safari"] {
-    filter: grayscale(0%);
+    .vitae-badge--image img[src*="safari"],
+    .vitae-card:hover .vitae-badge--image img[src*="safari"] {
+      mix-blend-mode: normal;
+      filter: none;
+      opacity: 1;
+    }
   }
 
   .vitae-date {
@@ -800,27 +798,25 @@ body.sticky-bottom-footer {
       opacity 0.25s ease;
   }
 
-  // Dark mode: multiply against a dark bg makes dark glyphs vanish.
-  // Invert so dark glyphs read as light, and switch the blend mode so
-  // any remaining bright pixels still drop into the dark page.
-  // SAFARI is excluded -- its orange palette stays orange in both modes.
+  // Dark mode:
+  //   * Non-SAFARI logos render as pure white silhouettes (full opacity,
+  //     same in default and hover states).
+  //   * SAFARI keeps its native orange palette unchanged in both states.
+  // `brightness(0) invert(1)` collapses any color or alpha-coloured
+  // pixel into pure white -- works for the multi-colour RVCE PNG too.
   html[data-theme="dark"] & {
-    .affiliation-logo {
-      mix-blend-mode: screen;
-      filter: invert(1) grayscale(60%);
-    }
-
+    .affiliation-logo,
     a:hover .affiliation-logo {
-      filter: invert(1) grayscale(0%);
+      mix-blend-mode: screen;
+      filter: brightness(0) invert(1);
+      opacity: 1;
     }
 
-    .affiliation-logo[src*="safari"] {
-      mix-blend-mode: normal;
-      filter: grayscale(40%);
-    }
-
+    .affiliation-logo[src*="safari"],
     a:hover .affiliation-logo[src*="safari"] {
-      filter: grayscale(0%);
+      mix-blend-mode: normal;
+      filter: none;
+      opacity: 1;
     }
   }
 
