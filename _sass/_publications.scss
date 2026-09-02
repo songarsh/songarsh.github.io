@@ -55,20 +55,12 @@
       display: block;
       flex: 1 1 auto;
       height: 1px;
-      background: linear-gradient(
-        to right,
-        transparent 0%,
-        var(--global-text-color-light) 100%
-      );
+      background: linear-gradient(to right, transparent 0%, var(--global-text-color-light) 100%);
       opacity: 0.4;
     }
 
     &::after {
-      background: linear-gradient(
-        to right,
-        var(--global-text-color-light) 0%,
-        transparent 100%
-      );
+      background: linear-gradient(to right, var(--global-text-color-light) 0%, transparent 100%);
     }
   }
 
@@ -93,7 +85,10 @@
       border-radius: 6px;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
       overflow: hidden;
-      transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s ease;
+      transition:
+        box-shadow 0.18s ease,
+        transform 0.18s ease,
+        border-color 0.18s ease;
 
       // A subtle 2px burgundy bar slides in from the left on hover.
       &::before {
@@ -205,6 +200,11 @@
       }
 
       .links {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.35rem;
+
         a.btn {
           color: var(--global-text-color);
           border: 1px solid var(--global-text-color);
@@ -219,8 +219,85 @@
             border-color: var(--global-theme-color);
           }
         }
+
+        // Icon-only buttons (PDF, arXiv, GitHub, Zenodo): bare logos, no pill
+        // border, so the mark itself is the affordance.
+        a.btn.btn-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          padding: 0.2rem 0.35rem;
+          line-height: 1;
+
+          // A Font Awesome / Academicons glyph only paints ~85% of its em box,
+          // so the arXiv wordmark is set a little shorter than the font size to
+          // make the two visually the same height.
+          i {
+            font-size: 1.5rem;
+            line-height: 1;
+          }
+
+          img {
+            display: block;
+            height: 1.25rem;
+            width: auto;
+            transition: opacity 0.18s ease;
+          }
+
+          // The glyph fonts pick up the theme colour from a.btn:hover; the
+          // arXiv wordmark is a fixed-colour image, so it dims instead.
+          &:hover img {
+            opacity: 0.7;
+          }
+        }
+
         a.award.btn {
           border-color: var(--global-highlight-color);
+        }
+      }
+
+      // First line: paper/code/data links left, artifact badges and awards right.
+      .links-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.35rem 0.75rem;
+      }
+
+      // Second line: bibtex and other expandable material.
+      .links-secondary {
+        margin-top: 0.2rem;
+      }
+
+      .artifact-badges {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.35rem;
+        margin-left: auto;
+
+        a {
+          display: inline-flex;
+
+          &:hover img {
+            opacity: 0.85;
+          }
+        }
+
+        // Kept to roughly the height of the link buttons so the badges do not
+        // stretch the row and push the second line down.
+        img {
+          display: block;
+          height: 1.8rem;
+          width: auto;
+        }
+
+        @media (max-width: 576px) {
+          img {
+            height: 1.5rem;
+          }
         }
       }
 

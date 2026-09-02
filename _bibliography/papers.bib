@@ -25,6 +25,13 @@
 %   abstract    = paragraph rendered behind the "Abs" toggle
 %   award       = string -- displays the award pill
 %   award_name  = label for the award pill (e.g. "Best Paper")
+%   code        = repository URL -- renders the GitHub icon
+%   zenodo      = Zenodo record URL -- renders the Zenodo icon
+%   artifact_badges = comma-separated keys from _data/artifact_badges.yml,
+%                 e.g. {acm-available, acm-functional, acm-reproduced}.
+%                 Available keys: acm-available, acm-functional, acm-reusable,
+%                 acm-reproduced, acm-replicated, ieee-oro, ieee-ror,
+%                 ieee-ror-r. Rendered right-aligned next to the award pill.
 % =============================================================================
 
 @inproceedings{songara2026terracotta,
@@ -34,7 +41,10 @@
   title       = {{Terracotta: Enabling DRAM Techniques via a Flexible DRAM Interface and Memory Controller}},
   author      = {Songara, Harsh and Kanellopoulos, Konstantinos and Bostanci, F. Nisa and Sgouras, Konstantinos and Olgun, Ataberk and Yuksel, Ismail Emir and Kakolyris, Andreas Kosmas and Yaglikci, Abdullah Giray and Mutlu, Onur},
   booktitle   = {MICRO},
-  year        = {2026}
+  year        = {2026},
+  code        = {https://github.com/CMU-SAFARI/Terracotta},
+  zenodo      = {https://zenodo.org/records/21542059},
+  artifact_badges = {acm-available, acm-functional, acm-reproduced}
 }
 
 @inproceedings{kanellopoulos2026trail,
@@ -44,7 +54,9 @@
   title       = {{Trail: Effective, Low-Cost and Scalable Temporal TLB Prefetching via Page-Table-Embedded Deltas}},
   author      = {Kanellopoulos, Konstantinos and Sgouras, Konstantinos and Songara, Harsh and Bera, Rahul and Mutlu, Onur},
   booktitle   = {MICRO},
-  year        = {2026}
+  year        = {2026},
+  code        = {https://github.com/CMU-SAFARI/Virtuoso/tree/trail-artifact-release},
+  artifact_badges = {acm-available, acm-functional, acm-reproduced}
 }
 
 @inproceedings{kanellopoulos2026revelator,
@@ -55,7 +67,8 @@
   author      = {Kanellopoulos, Konstantinos and Sgouras, Konstantinos and Songara, Harsh and Kakolyris, Andreas Kosmas and Nitu, Vlad-Petru and Galanopoulos, Spiros and Bera, Rahul and Koliogeorgi, Konstantina and Kumar, Rakesh and Mutlu, Onur},
   booktitle   = {ISCA},
   year        = {2026},
-  arxiv       = {2508.02007}
+  arxiv       = {2508.02007},
+  code        = {https://github.com/CMU-SAFARI/Virtuoso/tree/revelator-artifact-release}
 }
 
 @inproceedings{kakolyris2026columnkeeper,
@@ -66,7 +79,10 @@
   author      = {Kakolyris, Andreas Kosmas and Bostanci, F. Nisa and Olgun, Ataberk and Yuksel, Ismail Emir and Sgouras, Konstantinos and Songara, Harsh and Baser, Umut and Kanellopoulos, Konstantinos and Yaglikci, A. Giray and Mutlu, Onur},
   booktitle   = {ISCA},
   year        = {2026},
-  arxiv       = {2606.22632}
+  arxiv       = {2606.22632},
+  code        = {https://github.com/CMU-SAFARI/ColumnKeeper},
+  zenodo      = {https://zenodo.org/records/19446518},
+  artifact_badges = {acm-available, acm-functional, acm-reproduced}
 }
 
 @inproceedings{nitu2026argus,
@@ -89,5 +105,6 @@
   author      = {Baser, Umut and Yuksel, Ismail Emir and Bostanci, F. Nisa and Sgouras, Konstantinos and Olgun, Ataberk and Demirli, Emre Hakan and Yue, Zhiheng and Songara, Harsh and Ergin, Oguz and Mutlu, Onur},
   booktitle   = {DSN Disrupt},
   year        = {2026},
-  arxiv       = {2606.15470}
+  arxiv       = {2606.15470},
+  code        = {https://github.com/CMU-SAFARI/SiMRA-PUF}
 }

@@ -324,6 +324,7 @@ filtered_bibtex_keywords:
     additional_info,
     altmetric,
     annotation,
+    artifact_badges,
     arxiv,
     award,
     award_name,
@@ -345,6 +346,7 @@ filtered_bibtex_keywords:
     supp,
     video,
     website,
+    zenodo,
   ]
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)

@@ -1,0 +1,54 @@
+# Artifact-evaluation badges shown on the right-hand side of a publication row.
+#
+# Assign them per paper in _bibliography/papers.bib with a comma-separated list:
+#
+#   artifact_badges = {acm-available, acm-functional, acm-reproduced}
+#
+# Keys must match the keys below. `image` is a file in
+# assets/img/badges/artifact/ -- see that folder's README.md for where the
+# artwork comes from.
+#
+# ACM badges follow ACM's Artifact Review and Badging v1.1:
+#   https://www.acm.org/publications/policies/artifact-review-and-badging-current
+# IEEE badges follow the NISO reproducibility badging terms IEEE uses
+# (ORO / ROR / ROR-R).
+
+acm-available:
+  name: ACM Artifacts Available
+  image: acm-available.png
+  url: https://www.acm.org/publications/policies/artifact-review-and-badging-current
+
+acm-functional:
+  name: ACM Artifacts Evaluated – Functional
+  image: acm-functional.png
+  url: https://www.acm.org/publications/policies/artifact-review-and-badging-current
+
+acm-reusable:
+  name: ACM Artifacts Evaluated – Reusable
+  image: acm-reusable.png
+  url: https://www.acm.org/publications/policies/artifact-review-and-badging-current
+
+acm-reproduced:
+  name: ACM Results Reproduced
+  image: acm-reproduced.png
+  url: https://www.acm.org/publications/policies/artifact-review-and-badging-current
+
+acm-replicated:
+  name: ACM Results Replicated
+  image: acm-replicated.png
+  url: https://www.acm.org/publications/policies/artifact-review-and-badging-current
+
+ieee-oro:
+  name: IEEE Open Research Objects (ORO)
+  image: ieee-oro.png
+  url: https://www.niso.org/publications/rp-31-2021-badging
+
+ieee-ror:
+  name: IEEE Research Objects Reviewed (ROR)
+  image: ieee-ror.png
+  url: https://www.niso.org/publications/rp-31-2021-badging
+
+ieee-ror-r:
+  name: IEEE Results Reproduced (ROR-R)
+  image: ieee-ror-r.png
+  url: https://www.niso.org/publications/rp-31-2021-badging
