@@ -1,3 +1,11 @@
+{%- comment -%}
+  The deploy workflow runs PurgeCSS over _site, so every stylesheet under
+  assets/css is rewritten after Jekyll builds it. Hashing the source file
+  therefore produces a cache key that never changes when the deployed CSS
+  does (and for the Sass-generated main.css it hashes nothing at all), so
+  returning visitors keep stale styles. Key the CSS on the build instead.
+{%- endcomment -%}
+{%- assign css_bust = site.time | date: '%s' -%}
 <!-- Metadata, OpenGraph and Schema.org -->
 {% include metadata.liquid %}
 
@@ -10,7 +18,7 @@
 >
 
 <!-- Bootstrap & MDB -->
-<link rel="stylesheet" href="{{ '/assets/css/bootstrap.min.css' | relative_url | bust_file_cache }}">
+<link rel="stylesheet" href="{{ '/assets/css/bootstrap.min.css' | relative_url }}?v={{ css_bust }}">
 <link
   rel="stylesheet"
   href="{{ site.third_party_libraries.mdb.url.css }}"
@@ -30,8 +38,8 @@
 {% endif %}
 
 <!-- Fonts & Icons -->
-<link defer rel="stylesheet" href="{{ '/assets/css/academicons.min.css' | relative_url | bust_file_cache }}">
-<link defer rel="stylesheet" href="{{ '/assets/css/scholar-icons.css' | relative_url | bust_file_cache }}">
+<link defer rel="stylesheet" href="{{ '/assets/css/academicons.min.css' | relative_url }}?v={{ css_bust }}">
+<link defer rel="stylesheet" href="{{ '/assets/css/scholar-icons.css' | relative_url }}?v={{ css_bust }}">
 <link
   defer
   rel="stylesheet"
@@ -43,14 +51,14 @@
 <link
   defer
   rel="stylesheet"
-  href="{{ '/assets/css/jekyll-pygments-themes-github.css' | relative_url | bust_file_cache }}"
+  href="{{ '/assets/css/jekyll-pygments-themes-github.css' | relative_url }}?v={{ css_bust }}"
   media=""
   id="highlight_theme_light"
 >
 
 {% if page.toc and page.toc.sidebar %}
   <!-- Sidebar Table of Contents -->
-  <link defer href="{{ '/assets/css/bootstrap-toc.min.css' | relative_url | bust_file_cache }}" rel="stylesheet">
+  <link defer href="{{ '/assets/css/bootstrap-toc.min.css' | relative_url }}?v={{ css_bust }}" rel="stylesheet">
 {% endif %}
 
 <!-- Styles -->
@@ -74,7 +82,7 @@
 {% elsif site.icon != blank %}
   <link rel="shortcut icon" href="{{ site.icon | prepend: '/assets/img/' | relative_url | bust_file_cache}}">
 {% endif %}
-<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url | bust_css_cache }}">
+<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}?v={{ css_bust }}">
 <link rel="canonical" href="{{ page.url | replace:'index.html','' | absolute_url }}">
 
 {% if site.enable_darkmode %}
@@ -83,7 +91,7 @@
   <link
     defer
     rel="stylesheet"
-    href="{{ '/assets/css/jekyll-pygments-themes-native.css' | relative_url | bust_file_cache }}"
+    href="{{ '/assets/css/jekyll-pygments-themes-native.css' | relative_url }}?v={{ css_bust }}"
     media="none"
     id="highlight_theme_dark"
   >
@@ -193,7 +201,7 @@
 {% endif %}
 
 {% if page.tikzjax %}
-  <link defer rel="stylesheet" type="text/css" href="{{ '/assets/css/tikzjax.min.css' | relative_url | bust_file_cache }}">
+  <link defer rel="stylesheet" type="text/css" href="{{ '/assets/css/tikzjax.min.css' | relative_url }}?v={{ css_bust }}">
 {% endif %}
 
 {% if site.enable_cookie_consent %}
